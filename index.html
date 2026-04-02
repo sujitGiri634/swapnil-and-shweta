@@ -274,7 +274,19 @@
 
   /* ── EVENTS SECTION ───────────────────────────────────────── */
   #events {
-    background: var(--cream);
+    
+    background-image: url(nature-3082832_1280.jpg); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    max-height: 450vh;
+    
+    /* Centering the content inside */
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   
   .location{
@@ -556,6 +568,12 @@
 
   /* ── RESPONSIVE ───────────────────────────────────────────── */
   @media(max-width: 600px) {
+    #events {
+      background-size: cover; 
+      background-repeat: no-repeat;
+      background-position: top center; 
+      min-height: 80vh; 
+    }
     .invite-frame { padding: 2rem 1.5rem; }
     .couple-names { font-size: 3rem; }
     .floral-tl, .floral-tr { width: 180px; }
