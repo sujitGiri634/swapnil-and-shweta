@@ -275,7 +275,7 @@
   /* ── EVENTS SECTION ───────────────────────────────────────── */
   #events {
     
-    background-image: url(nature-3082832_1280.jpg); 
+    background-image: url(images/both_image.png); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -814,7 +814,7 @@
     </a>
 
     <div class="event-card engagement reveal">
-      <div class="event-icon">💍</div>
+      <div class="event-icon">👫</div>
       <div class="event-date">Saturday · 16 May 2026</div>
       <h3 class="event-name">Reception</h3>
       <p class="event-location">
@@ -993,6 +993,7 @@
 
 <script>
   // ── Scroll reveal
+  
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
@@ -1020,22 +1021,43 @@
 
   // ── Decorative strip
   const items = [
-    {e:'🌸', bg:'#fde8f0'},{e:'🪷', bg:'#f0e8fd'},{e:'✨', bg:'#fdf4e0'},
-    {e:'💍', bg:'#e8f0fd'},{e:'🌺', bg:'#fde8f0'},{e:'🕯️', bg:'#fdf4e0'},
-    {e:'🌼', bg:'#fdf0e8'},{e:'💫', bg:'#f0fde8'},{e:'🪻', bg:'#f0e8fd'},
-    {e:'🌷', bg:'#fde8f0'},{e:'🎊', bg:'#fdf4e0'},{e:'💐', bg:'#e8fdf0'},
+    {e:'images/image_1.jpeg', bg:'#fde8f0'}, // Path to your image
+    {e:'images/image_2.jpeg', bg:'#f0e8fd'},    // Example of another image
+    {e:'images/image_3.jpeg', bg:'#fdf4e0'},                   // You can still keep emojis if you want!
+    {e:'images/image_4.jpeg', bg:'#e8f0fd'},
+    {e:'images/image_5.jpeg', bg:'#fde8f0'},
+    {e:'images/image_6.jpeg', bg:'#fdf4e0'},
+    {e:'images/image_7.jpeg', bg:'#fdf0e8'},
+    {e:'images/image_8.jpeg', bg:'#f0fde8'},
+    {e:'images/image_9.jpeg', bg:'#f0e8fd'},
+    {e:'images/image_10.jpeg', bg:'#fde8f0'},
+    {e:'images/image_11.jpeg', bg:'#fdf4e0'},
+    {e:'images/image_12.jpeg', bg:'#000000'},
   ];
+  
   const track = document.getElementById('stripTrack2');
   if(track){
     [...items,...items].forEach(it => {
       const d = document.createElement('div');
       d.className = 'strip-item';
       d.style.background = it.bg;
-      d.textContent = it.e;
+
+      // Check if the string looks like an image path (ends in .jpeg, .png, etc.)
+      if (it.e.includes('/') || it.e.includes('.')) {
+        const img = document.createElement('img');
+        img.src = it.e;
+        img.style.width = '100%';  // Adjust size to match emoji feel
+        img.style.height = '100%';
+        img.style.objectFit = 'contain';
+        d.appendChild(img);
+      } else {
+        // If it's just an emoji, keep using textContent
+        d.textContent = it.e;
+      }
+      
       track.appendChild(d);
     });
   }
-
   // ── Parallax hero canvas
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
